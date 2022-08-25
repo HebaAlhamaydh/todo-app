@@ -73,7 +73,7 @@ const ToDo = () => {
   <button type="submit" calss="button">Add Item</button>
 </label>
 </form>
-{/* {if(list<)} */}
+
       {list.map(item => (
         <div key={item.id}>
           <p>{item.text}</p>
