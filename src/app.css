@@ -6,11 +6,15 @@
       'Lucida Sans', Arial, sans-serif;
   }
   
-  body {
-    background: linear-gradient(
-      90deg,
-      #f86397 0%,
-      #FFE898 100%
-    );
+  /* body {
+    
+  } */
+  .list-card{
+    margin-left:  5px;
+    margin-top: 15px;
+    width: 25%;
+    background-color: #52477f;
+    color: white;
   }
+ 
  

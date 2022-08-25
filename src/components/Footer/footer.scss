@@ -1,15 +1,13 @@
 
 
 footer {
-  background: linear-gradient(
-    90deg,
-    #f08e32 0%,
-    #FFE898 100%
-  );
+  background: rgb(5,0,36);
+  background: linear-gradient(90deg, rgba(59, 2, 73, 0.995) 0%, rgba(121,9,102,1) 35%, rgba(0,212,255,1) 100%);
     border-top: 1px solid #eee;
     padding: 1em 3em;
     margin: 0;
 position: fixed;
+color: #eee;
 bottom: 0px;
 width: 100%;
     

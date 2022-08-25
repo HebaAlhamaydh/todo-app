@@ -1,0 +1,28 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+.card{
+    display: flex;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    flex-direction: column;
+    width: 25%;
+    height:500px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    align-items:flex-start;
+    font-family: "Cursive";
+    text-align: center;
+    padding: 20px;
+    justify-content: space-between;
+
+    float: left;
+}
+.add{
+    text-align: center;
+    color: rgb(81, 10, 109);
+}
+.button{
+    align-items: center;
+}

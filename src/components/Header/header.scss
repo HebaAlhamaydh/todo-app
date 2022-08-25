@@ -2,7 +2,7 @@
 header {
    
     border-bottom: 1px solid #eee;
-    color: rgb(224, 48, 157);
+    color:rgba(9,9,121,1);
     padding: 0;
     margin: 0;
     text-align: center;
@@ -10,4 +10,9 @@ header {
   header .bp4-minimal{
       direction: ltr;
       
+  }
+  nav.bp4-navbar{
+    color: #eee;
+    background: rgb(5,0,36);
+    background: linear-gradient(90deg, rgba(59, 2, 73, 0.995) 0%, rgba(121,9,102,1) 35%, rgba(0,212,255,1) 100%);
   }
