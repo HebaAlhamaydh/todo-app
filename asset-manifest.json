@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/todo-app/static/css/main.b1987286.css",
+    "main.css": "/todo-app/static/css/main.c361866c.css",
     "main.js": "/todo-app/static/js/main.e43fca5c.js",
     "static/media/blueprint-icons-20.eot?": "/todo-app/static/media/blueprint-icons-20.41ddc43fc03d2ac8fce8.eot",
     "static/media/blueprint-icons-20.ttf?": "/todo-app/static/media/blueprint-icons-20.825b946a5ee739f0afc3.ttf",
@@ -11,11 +11,11 @@
     "static/media/blueprint-icons-20.woff2?": "/todo-app/static/media/blueprint-icons-20.f6c7480ba6e25de3baff.woff2",
     "static/media/blueprint-icons-16.woff2?": "/todo-app/static/media/blueprint-icons-16.1cfa3606a45bf6aaf201.woff2",
     "index.html": "/todo-app/index.html",
-    "main.b1987286.css.map": "/todo-app/static/css/main.b1987286.css.map",
+    "main.c361866c.css.map": "/todo-app/static/css/main.c361866c.css.map",
     "main.e43fca5c.js.map": "/todo-app/static/js/main.e43fca5c.js.map"
   },
   "entrypoints": [
-    "static/css/main.b1987286.css",
+    "static/css/main.c361866c.css",
     "static/js/main.e43fca5c.js"
   ]
 }
