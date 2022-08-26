@@ -1,0 +1,16 @@
+/* @import "~normalize.css";
+ @import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css"; */
+.hide{
+    display: none;
+}
+.bp4-elevation-4{
+    background: rgb(63,218,251);
+    background: radial-gradient(circle, rgba(63,218,251,0.48503151260504207) 0%, rgba(252,70,174,0.4458158263305322) 100%);
+   width: 25%;
+    float: right; 
+    justify-content: space-between;
+    text-align: center;  
+    -ms-text-size-adjust: auto;
+    margin: 10px 10px 10px 10px;
+}

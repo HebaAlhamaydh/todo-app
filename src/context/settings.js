@@ -1,13 +1,14 @@
-import React,{useState} from 'react';
-
- export const SettingsContext = React.createContext()
-
- export default function Setting (props){
+import React, { useState } from "react";
+export const SettingsContext = React.createContext()
+export default function Setting (props){
     const [show,setShow]=useState(true)
     const [itemPage,setItemPage]=useState(4)
     const [sortBy,setSortBy] = useState("difficulty");
+    const [list, setList] = useState([]);
     const state = {
-         show,
+        list,
+        setList,
+        show,
         itemPage,
         setShow,
         setItemPage,
@@ -18,10 +19,9 @@ import React,{useState} from 'react';
 return (
 
 <SettingsContext.Provider value={state}>
-
     {props.children}
 </SettingsContext.Provider>
 
 )
 
- }
+}

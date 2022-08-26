@@ -12,17 +12,24 @@
     font-weight: bold;
     margin-left: 10px;
     align-items:flex-start;
-    font-family: "Cursive";
-    text-align: center;
+    font-family:Cursive;
     padding: 20px;
     justify-content: space-between;
 
     float: left;
 }
-// .add{
+/* // .add{
 //     text-align: center;
 //     color: rgb(81, 10, 109);
 // }
 // .button{
 //     align-items: center;
-// }
+// } */
+h1{
+    background-color: #9ccaec;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+}
