@@ -1,13 +1,13 @@
 {
   "name": "todo-app",
-  "homepage": "https://HebaAlhamaydh.github.io/todo-app",
+ 
   "version": "1.0.0",
   "description": "",
   
   "main": "index.js",
   "dependencies": {
     "@blueprintjs/core": "^4.9.0",
-    "gh-pages": "^4.0.0",
+    
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.1.3",
