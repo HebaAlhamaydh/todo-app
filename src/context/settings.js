@@ -16,6 +16,15 @@ export default function Setting (props){
         setSortBy
 
     }
+    // useEffect(()=>{
+    //     let data = JSON.parse(localStorage.getItem("settings"));
+    //     if(data){
+    //          setDisplay(data.display);
+    //          setItemPage(data.itemPage);
+    //          setSortBy(data.sortBy);
+    //     }
+       
+    // },[])
 return (
 
 <SettingsContext.Provider value={state}>

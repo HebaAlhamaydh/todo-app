@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import  {SettingsContext} from './context/settings'
 import { Button, Card, Elevation } from "@blueprintjs/core";
-export default function Hestory() {
+export default function History() {
   const myContext=useContext(SettingsContext);
   //  const data =()=>(list.map((element, index) => {
   //   if (element % 2 === 0) {

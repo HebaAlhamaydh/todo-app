@@ -6,7 +6,7 @@ import Pagination from "./components/pagination/Pagination";
 import ToDo from './components/Todo/todo.js';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-import Hestory from './history';
+import History from './history';
 import './app.css'
 import Setting from './context/settings';
 export default function App (){
@@ -14,20 +14,18 @@ export default function App (){
     return (
         <>
         <Header />
-        <Setting>
-       
-        
+        <Setting>  
       <BrowserRouter>
     <Routes>
     <Route path='/'      element={<ToDo />}/>
-    <Route path='/hestory' element={<Hestory/>}/>
+    <Route path='/hestory' element={<History/>}/>
     </Routes>
     </BrowserRouter> 
     {/* <ToDo /> */}
      
-      <Footer />
+      
       </Setting>
-     
+      <Footer />
         </>
     );
   

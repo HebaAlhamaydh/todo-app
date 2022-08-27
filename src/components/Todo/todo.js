@@ -3,7 +3,7 @@ import useForm from '../../hooks/form';
 import {SettingsContext} from '../../context/settings'
 import Pagination from "../pagination/Pagination";
 import ReactPaginate from 'react-paginate';
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import { Switch, Button, Card, Elevation } from "@blueprintjs/core";
 import { v4 as uuid } from 'uuid';
 import List from "../list/list.jsx"
 import { Link } from 'react-router-dom';
@@ -27,7 +27,7 @@ const ToDo = () => {
   function addItem(item) {
     item.id = uuid();
     item.complete = false;
-    // item.show=true;
+    item.show=true;
     console.log(item);
     myContext.setList([...myContext.list, item]);
   }
@@ -41,7 +41,7 @@ const ToDo = () => {
     const items = myContext.list.map( item => {
       if ( item.id === id ) {
         item.complete = ! item.complete;
-        // item.show=! item.show;
+        item.show=! item.show;
       }
       return item;
     });
@@ -49,6 +49,18 @@ const ToDo = () => {
     myContext.setList(items);
 
   }
+  function showCompleted(){
+    const items = myContext.list.map( item => {
+     if(item.complete){
+      return item;
+     }
+     
+    });
+  
+    return items;
+ 
+  }
+
   useEffect(() => {
     myContext.list.sort((a,b) => (a.difficulty > b.difficulty) ? 1 : ((b.difficulty > a.difficulty) ? -1 : 0));
     let incompleteCount = myContext.list.filter(item => !item.complete).length;
@@ -86,14 +98,14 @@ const ToDo = () => {
 <label>
   <button type="submit" calss="button">Add Item</button>
 </label>
+<Switch checked={false} label="hhhhh" onChange={showCompleted} />
 </form>
     {
      myContext.list.map((item,idx)=>(
       <>
        <List key={idx} item={item} toggleComplete={toggleComplete} deleteItem={deleteItem}/>
-         
       
-      </> 
+      </>
       ))
       }
        {/* <Pagination
