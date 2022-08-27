@@ -1,20 +1,19 @@
 import React, {useContext,useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
 import {SettingsContext} from '../../context/settings'
-import Pagination from "../pagination/Pagination";
-import ReactPaginate from 'react-paginate';
+import Pagination from "../pagination/Pagination"
+// import Pagination from "../pagination/Pagination";
+// import ReactPaginate from 'react-paginate';
 import { Switch, Button, Card, Elevation } from "@blueprintjs/core";
 import { v4 as uuid } from 'uuid';
 import List from "../list/list.jsx"
 import { Link } from 'react-router-dom';
 import "./todo.css";
+const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
 const ToDo = () => {
 
-  // const [currentItems, setCurrentItems] = useState([]);
-  // const [pageCount, setPageCount] = useState(0);
-  // const [itemOffset, setItemOffset] = useState(0);
-
+  const [todos, setTodos] = useState([]);
 
   const myContext=useContext(SettingsContext);
 
@@ -22,58 +21,72 @@ const ToDo = () => {
   // const [list, setList] = useState([]);
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
-  
+ 
+//////////////////////////////pagination
+  const [currentPage, setCurrentPage] = useState(1); 
+const [recordsPerPage] = useState(4);
+const indexOfLastRecord = currentPage * recordsPerPage;
+const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+const currentRecords = todos.slice(indexOfFirstRecord, indexOfLastRecord);
+const paginate = pageNumber => setCurrentPage(pageNumber);
+//////////////////////////////////  
 
   function addItem(item) {
     item.id = uuid();
     item.complete = false;
-    item.show=true;
-    console.log(item);
+     item.show=true;
     myContext.setList([...myContext.list, item]);
+    setTodos([item, ...todos]);
   }
 
   function deleteItem(id) {
-    const items = myContext.list.filter( item => item.id !== id );
-    myContext.setList(items);
+    // const items = myContext.list.filter( item => item.id !== id );
+    // myContext.setList(items);
+    setTodos(todos.filter(todo => todo.id !== id));
   }
 
   function toggleComplete(id) {
-    const items = myContext.list.map( item => {
+    const items = todos.map( item => {
       if ( item.id === id ) {
         item.complete = ! item.complete;
-        item.show=! item.show;
+        // / item.show=! item.show;
       }
+      
       return item;
     });
-
-    myContext.setList(items);
-
+    // myContext.setList(items);
+    setTodos(items);
   }
+
+
+
   function showCompleted(){
-    const items = myContext.list.map( item => {
-     if(item.complete){
-      return item;
-     }
-     
-    });
-  
-    return items;
- 
+ myContext.setShow(!show)
   }
 
   useEffect(() => {
+    const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storageTodos) {
+      setTodos(storageTodos);
+    }
     myContext.list.sort((a,b) => (a.difficulty > b.difficulty) ? 1 : ((b.difficulty > a.difficulty) ? -1 : 0));
-    let incompleteCount = myContext.list.filter(item => !item.complete).length;
+    let incompleteCount = myContext.list.filter(item => !item.complete);
     setIncomplete(incompleteCount);
-    document.title = `To Do myContext.List: ${incomplete}`;
-  }, [myContext.list]);
+    document.title = `To Do myContext.List: ${incomplete.length}`;
+  }, []);
+  useEffect(() => {
+    // fires when todos array gets updated
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
+
+
 
   return (
     <>
    
     <header>
         <h1>To Do List: {incomplete.length} items pending</h1>
-        <Link to='/hestory'>COMPLETED</Link>
+        <h2><Link to='/hestory'>PRESS HERE TO DISPLAY COMPLETED ITEMS</Link></h2>
       </header>
      
  <form onSubmit={handleSubmit} class="card" >
@@ -95,27 +108,30 @@ const ToDo = () => {
   <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
 </label>
 
-<label>
-  <button type="submit" calss="button">Add Item</button>
-</label>
-<Switch checked={false} label="hhhhh" onChange={showCompleted} />
+<div calss="wrapper">
+  <button type="submit" >Add Item</button>
+</div>
+<Switch checked={myContext.show} onChange={showCompleted}>Display completed Items</Switch>
+{/* <button className='show' onClick={showCompleted}>{myContext.show ? 'Show Completed Items' : 'Hide Completed Items'}</button> */}
+
 </form>
+
     {
-     myContext.list.map((item,idx)=>(
-      <>
+    currentRecords.map((item,idx)=>(
+      
+      //  item.complete?
+      //     null:
        <List key={idx} item={item} toggleComplete={toggleComplete} deleteItem={deleteItem}/>
       
-      </>
       ))
+      
       }
-       {/* <Pagination
-        className="pagination-bar"
-        currentPage={currentPage}
-        totalCount={data.length}
-        pageSize={PageSize}
-        onPageChange={page => setCurrentPage(page)}
-      /> */}
-  
+       
+   
+        <Pagination recordsPerPage={recordsPerPage}
+          totalPosts={todos.length}
+          paginate={paginate} />
+    
     </>
     
   );

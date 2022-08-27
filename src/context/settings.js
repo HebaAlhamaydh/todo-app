@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useEffect,useState } from "react";
 export const SettingsContext = React.createContext()
 export default function Setting (props){
     const [show,setShow]=useState(true)
@@ -19,7 +19,7 @@ export default function Setting (props){
     // useEffect(()=>{
     //     let data = JSON.parse(localStorage.getItem("settings"));
     //     if(data){
-    //          setDisplay(data.display);
+    //         setShow(data.show);
     //          setItemPage(data.itemPage);
     //          setSortBy(data.sortBy);
     //     }
