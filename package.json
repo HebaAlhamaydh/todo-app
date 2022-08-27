@@ -22,16 +22,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HebaAlhamaydh/todo-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HebaAlhamaydh/todo-app/issues"
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",
