@@ -24,7 +24,7 @@ const ToDo = () => {
  
 //////////////////////////////pagination
   const [currentPage, setCurrentPage] = useState(1); 
-const [recordsPerPage] = useState(4);
+const [recordsPerPage,setrecordsPerPage] = useState(4);
 const indexOfLastRecord = currentPage * recordsPerPage;
 const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 const currentRecords = todos.slice(indexOfFirstRecord, indexOfLastRecord);
@@ -66,9 +66,12 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storageTodos) {
-      setTodos(storageTodos);
-    }
+        if (storageTodos) {
+            if (storageTodos.length > 0) {
+              
+                setTodos(storageTodos);
+            }
+        }
     myContext.list.sort((a,b) => (a.difficulty > b.difficulty) ? 1 : ((b.difficulty > a.difficulty) ? -1 : 0));
     let incompleteCount = myContext.list.filter(item => !item.complete);
     setIncomplete(incompleteCount);
@@ -107,7 +110,10 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
   <span>Difficulty</span>
   <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
 </label>
-
+<label>
+  <span>Difficulty</span>
+  <input onChange={(e)=>{setrecordsPerPage(e.target.value)}} type="text"  name="number" />
+</label>
 <div calss="wrapper">
   <button type="submit" >Add Item</button>
 </div>
@@ -115,18 +121,18 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
 {/* <button className='show' onClick={showCompleted}>{myContext.show ? 'Show Completed Items' : 'Hide Completed Items'}</button> */}
 
 </form>
-
+<div className='list'>
     {
     currentRecords.map((item,idx)=>(
       
       //  item.complete?
       //     null:
-       <List key={idx} item={item} toggleComplete={toggleComplete} deleteItem={deleteItem}/>
+       <List key={idx} item={item} toggleComplete={toggleComplete} deleteItem={deleteItem} />
       
       ))
       
       }
-       
+    </div>   
    
         <Pagination recordsPerPage={recordsPerPage}
           totalPosts={todos.length}

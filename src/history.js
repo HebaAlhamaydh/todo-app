@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import  {SettingsContext} from './context/settings'
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
-import {Card} from "@blueprintjs/core";
+import {  Card} from "@blueprintjs/core";
 export default function History() {
   const myContext= JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
   

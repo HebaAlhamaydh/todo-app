@@ -5,7 +5,7 @@ import { Card, Elevation } from "@blueprintjs/core";
 // import {SettingsContext} from "../../context/settings"
 export default function List({item,toggleComplete,deleteItem}) {
   // const myContext=useContext(SettingsContext);
-  if(!item.complete) {
+ console.log(item.complete);
   return (
     <>
     
@@ -14,7 +14,7 @@ export default function List({item,toggleComplete,deleteItem}) {
     <p><small>Assigned to: {item.assignee}</small></p>
     <p><small>Difficulty: {item.difficulty}</small></p>
     <p><small>id: {item.id}</small></p>
-    <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()} </div>
+    <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete} </div>
     <br></br>
     <button onClick={() => deleteItem(item.id)}>Delete Item</button>
 
@@ -48,4 +48,3 @@ export default function List({item,toggleComplete,deleteItem}) {
 //   }
 
   }
-}
