@@ -2,9 +2,6 @@ import React, {useContext,useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
 import {SettingsContext} from '../../context/settings'
 import Pagination from "../pagination/Pagination"
-// import Pagination from "../pagination/Pagination";
-// import ReactPaginate from 'react-paginate';
-import { Switch, Button, Card, Elevation } from "@blueprintjs/core";
 import { v4 as uuid } from 'uuid';
 import List from "../list/list.jsx"
 import { Link } from 'react-router-dom';
@@ -58,12 +55,6 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
     setTodos(items);
   }
 
-
-
-  function showCompleted(){
- myContext.setShow(!show)
-  }
-
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
         if (storageTodos) {
@@ -91,7 +82,9 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
         <h1>To Do List: {incomplete.length} items pending</h1>
         <h2><Link to='/hestory'>PRESS HERE TO DISPLAY COMPLETED ITEMS</Link></h2>
       </header>
-     
+      <Pagination recordsPerPage={recordsPerPage}
+          totalPosts={todos.length}
+          paginate={paginate} />  
  <form onSubmit={handleSubmit} class="card" >
 
 <h2 class="add">Add To Do Item</h2>
@@ -111,22 +104,20 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
   <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
 </label>
 <label>
-  <span>Difficulty</span>
+  <span>Input number of Items per Page:</span>
   <input onChange={(e)=>{setrecordsPerPage(e.target.value)}} type="text"  name="number" />
 </label>
 <div calss="wrapper">
   <button type="submit" >Add Item</button>
 </div>
-<Switch checked={myContext.show} onChange={showCompleted}>Display completed Items</Switch>
-{/* <button className='show' onClick={showCompleted}>{myContext.show ? 'Show Completed Items' : 'Hide Completed Items'}</button> */}
 
 </form>
 <div className='list'>
     {
     currentRecords.map((item,idx)=>(
       
-      //  item.complete?
-      //     null:
+       item.complete?
+          null:
        <List key={idx} item={item} toggleComplete={toggleComplete} deleteItem={deleteItem} />
       
       ))
@@ -134,9 +125,7 @@ const paginate = pageNumber => setCurrentPage(pageNumber);
       }
     </div>   
    
-        <Pagination recordsPerPage={recordsPerPage}
-          totalPosts={todos.length}
-          paginate={paginate} />
+        
     
     </>
     
