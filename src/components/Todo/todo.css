@@ -17,11 +17,22 @@
     justify-content: space-between;
     float: left;
 }
-/* /* // .add{
-//     text-align: center;
-//     color: rgb(81, 10, 109);
-// } */
-
+.card1{
+    /* display: flex; */
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+   
+    width: 20%;
+    height:170px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+   
+    font-family:Cursive;
+    padding: 20px;
+    justify-content: space-between;
+    float: left;
+}
 
 
 h1{

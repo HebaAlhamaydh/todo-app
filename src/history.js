@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
-import {  Card} from "@blueprintjs/core";
+import {  Card, Switch} from "@blueprintjs/core";
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 export default function History() {
+
   const myContext= JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
   
   return (
     <div>
+    
+
+
     {myContext.map(item => (
       item.complete?
         <Card key={item.id} className="bp4-elevation-4">
